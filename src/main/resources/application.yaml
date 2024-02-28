@@ -1,0 +1,22 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/kizup_db
+    username: admin
+    password: 123Mudar
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+  mvc:
+    static-path-pattern: /static/**
+
+token:
+  secret: ${TOKEN_SECRET:vgb5GtRNNE2Kck7s3d7oOGMKIZUPgPJuvy9xlquzy3daZ}
+  issuer: Kizup for Noble
+  cookies:
+    key: Authorization-Cookie
+cloud:
+  project:
+    id: ${PROJECT_ID:noble-415715}
+    bucket:
+      name: kizup

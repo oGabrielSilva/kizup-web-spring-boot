@@ -1,0 +1,129 @@
+<section id="user-body-container">
+  <div class="info">
+    <div class="goBack">
+      <a href="/" role="button" class="link" aria-label="Botão para voltar">Voltar</a>
+    </div>
+    <div>
+      <h1>Editar perfil</h1>
+      <p>
+        Olá, <strong id="user-name-strong" th:text="${user.name}"></strong>!
+        Bem-vindo(a)! Aqui, você tem a liberdade de atualizar suas informações de perfil ou
+        modificar sua senha conforme necessário. Estamos aqui para ajudá-lo(a) a manter seus dados sempre atualizados e
+        seguros. Sinta-se à vontade para fazer as alterações que desejar.
+      </p>
+    </div>
+  </div>
+  <main>
+    <div class="avatar-group">
+      <div>
+        <button id="choose-avatar-button" type="button" aria-label="Botão para escolher novo avatar"
+          title="Escolha um novo avatar">
+          <img id="avatar-IMG" th:src="${user.avatarURL}" alt="Avatar" width="70" height="70" loading="lazy"
+            role="button" th:aria-label="|Avatar do usuário ${user.name}|" th:title="|Avatar - ${user.name}|">
+        </button>
+      </div>
+      <div>
+        <form id="form-avatar" class="d-none">
+          <input type="file" accept=".jpg, .png, .jpeg, .PNG, .JPG, .JPEG" id="avatar-hidden-input">
+        </form>
+      </div>
+    </div>
+    <div class="input-group">
+      <p>Atualize seu nome de usuário</p>
+      <div role="button" aria-label="Clique para alterar o nome de usuário" id="pseudo-input-name"
+        class="input-group-ip">
+        <span aria-label="Seu nome de usuário atual" th:text="${user.name}"></span>
+      </div>
+      <div class="form-user-container" data-original-pos="top.-100vh" style="top: -100vh;">
+        <form class="form-user form-user-name">
+          <h2>Atualize seu nome de usuário <i class="bi bi-feather"></i></h2>
+          <div>
+            <label for="name">Nome</label>
+            <input th:value="${user.name}" th:data-original="|${user.name}|"
+              data-error="O seu nome precisa ter pelo menos 2 caracteres" type="text" id="name"
+              aria-label="Digite um novo nome" title="Troque seu nome de usuário">
+          </div>
+          <div class="form-user-buttons">
+            <button type="button" class="button-danger" aria-label="Cancelar atualização do nome">Cancelar</button>
+            <button type="submit" class="button-primary"
+              aria-label="Finalize a atualizar nome de usuário">Atualizar</button>
+          </div>
+        </form>
+      </div>
+    </div>
+    <div class="input-group">
+      <p>Atualize seu email</p>
+      <div role="button" aria-label="Clique para alterar seu email" id="pseudo-input-email" class="input-group-ip">
+        <span aria-label="Seu email atual" th:text="${user.email}"></span>
+      </div>
+      <div class="form-user-container form-user-email-container" data-original-pos="left.-100vw" style="left: -100vw;">
+        <form class="form-user form-user-email">
+          <h2>Atualize seu email <i class="bi bi-at"></i></h2>
+          <div>
+            <label for="email">Email</label>
+            <input th:data-original="|${user.email}|" data-error="Seu novo email precisa ser válido"
+              th:value="${user.email}" type="email" id="email" aria-label="Digite um novo email"
+              title="Troque seu email">
+          </div>
+          <div style="margin-top: 1rem; ">
+            <label for="email-password">Confirme sua senha</label>
+            <input type="password" data-error="Sua senha precisa conter pelo menos 8 caracteres" id="email-password"
+              aria-label="Confirme aqui a sua senha para poder atualizar seu email" title="Confirme sua senha">
+          </div>
+          <div class="form-user-buttons" style="margin-top: 1.5rem;">
+            <button type="button" class="button-danger" aria-label="Cancelar atualização do email">Cancelar</button>
+            <button type="submit" class="button-primary" aria-label="Finalize a atualização do email">Atualizar</button>
+          </div>
+        </form>
+      </div>
+    </div>
+    <div class="input-group">
+      <div class="change-password-input">
+        <button id="pseudo-input-password" role="button" aria-label="Clique para alterar sua senha" class="link">
+          Clique para atualizar sua senha
+        </button>
+      </div>
+      <div class="form-user-container form-user-password-container" data-original-pos="bottom.-100vh"
+        style="bottom: -100vh;">
+        <form class="form-user form-user-password">
+          <h2>Atualize sua senha <i class="bi bi-shield-lock"></i></h2>
+          <div class="input-password">
+            <label for="new-password"><strong class="title">Nova</strong> senha</label>
+            <input type="password" id="new-password" aria-label="Digite uma nova senha"
+              data-error="A senha precisa conter pelo menos 8 caracteres" placeholder="Mínimo de 8 caracteres">
+          </div>
+          <div class="input-password">
+            <label for="new-password-again"><strong class="title">Confirme</strong> a nova senha</label>
+            <input type="password" id="new-password-again" aria-label="COnfirme sua nova senha"
+              data-error="A nova senha precisa ser igual nos dois campos" placeholder="Mínimo de 8 caracteres">
+          </div>
+          <div class="input-password">
+            <label for="current-password">Sua senha <strong class="title">atual</strong></label>
+            <input type="password" id="current-password" aria-label="Sua senha atual"
+              placeholder="Mínimo de 8 caracteres" data-error="A senha precisa conter pelo menos 8 caracteres">
+            <div>
+              <button id="show-password" title="Visualize as senhas" aria-label="Botão para visualizar as senhas"
+                type="button" class="button-icon">
+                <span>Visualize as senhas</span>
+                <i class="bi bi-eye"></i>
+              </button>
+              <button id="hidden-password" title="Esconda as senhas" aria-label="Botão para esconder as senhas"
+                type="button" class="button-icon d-none">
+                <span>Esconda as senhas</span>
+                <i class="bi bi-eye-slash"></i>
+              </button>
+            </div>
+          </div>
+          <div class="form-user-buttons form-user-password-buttons">
+            <button type="button" class="button-danger" aria-label="Cancelar atualização da senha">Cancelar</button>
+            <button type="submit" class="button-primary" aria-label="Finalize a atualização da senha">Atualizar</button>
+          </div>
+        </form>
+      </div>
+    </div>
+    <div>
+      <button data-message="Sua conta foi desconectada... você será redirecionado em alguns segundos"
+        id="sign-out-button" aria-label="Clique para desconectar da sua conta">Desconectar</button>
+    </div>
+  </main>
+</section>

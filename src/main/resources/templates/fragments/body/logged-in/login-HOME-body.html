@@ -1,0 +1,75 @@
+<div id="home-body">
+  <div id="home-body-top">
+    <h2 role="link" title="Annonymous">
+      <span>Olá</span>,
+      <a href="/user" aria-label="Link para perfil do usuário" title="Nome do usuário" class="link">
+        <span class="title" th:text="${user != null ? user.name : 'Annonymous'}"></span>
+      </a>
+    </h2>
+  </div>
+  <main id="home-main">
+    <section style="margin-top: 2rem" id="user-quizzes">
+      <h3>Meus quizzes</h3>
+      <div class="quizzes-container">
+        <p>
+          Você ainda não criou nenhum quiz. Clique
+          <a href="/quiz/new" target="_blank" rel="noopener noreferrer">aqui</a>
+          para criar o primeiro!
+        </p>
+      </div>
+    </section>
+    <section id="last-quizzes-community">
+      <h3>Últimos da comunidade</h3>
+      <div class="quizzes-container">
+        <div>
+          <p>
+            Não foi encontrado nenhum quiz. Seja o primeiro a criar um quiz. Clique no botão
+            flutuante
+            <a href="/quiz/new" target="_blank" rel="noopener noreferrer">crie o seu quiz</a>.
+          </p>
+        </div>
+      </div>
+    </section>
+  </main>
+  <div id="session-form">
+    <form id="session-handler" data-session-type="SIGN_IN" data-session-action="/session" accept-charset="UTF-8"
+      method="POST">
+      <div id="session-top">
+        <div class="part">
+          <h2>Faça seu login</h2>
+          <button type="button" aria-label="Botão para fechar o formulário" title="Fechar formulário"
+            class="button-icon" id="session-form-hidden">
+            <i class="bi bi-x-lg"></i>
+          </button>
+        </div>
+        <p>
+          É bom vê-lo por aqui! Faça seu login para poder oficializar sua pontuação e aparecer nos
+          rankings
+        </p>
+      </div>
+      <div class="base-input">
+        <label for="session-email">Email</label>
+        <input aria-label="Campo para digitar seu email" type="email" name="email" autocomplete="email"
+          id="session-email" placeholder="robin.allsunday@noble.com" />
+      </div>
+      <div class="base-input">
+        <label for="session-password">Senha</label>
+        <input type="password" name="password" aria-label="Campo para digitar sua senha" id="session-password"
+          placeholder="Mínimo de 8 caracteres" />
+      </div>
+      <div id="forgot-password-container">
+        <a aria-label="Link para página de recuperação de senha" href="/forgot-password" target="_blank"
+          rel="noopener noreferrer" class="link">Esqueceu a senha?</a>
+      </div>
+      <div id="session-buttons">
+        <button type="submit" id="session-in" title="Entrar na sua conta" aria-label="Botão para fazer login"
+          class="button-primary">
+          Login
+        </button>
+        <button type="button" title="Crie uma conta" id="sign-up" aria-label="Botão para criar conta">
+          Criar conta
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

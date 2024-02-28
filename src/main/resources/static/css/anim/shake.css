@@ -1,0 +1,32 @@
+@keyframes shake-anim {
+  0% {
+    transform: translateX(-10px);
+  }
+
+  to {
+    transform: translateX(10px);
+  }
+}
+
+@keyframes anim-progress-indicator {
+  from {
+    margin-left: -15%;
+  }
+  to {
+    margin-left: 100%;
+    width: 80%;
+  }
+}
+
+.element-animated-by-shake {
+  animation: shake-anim 125ms linear infinite;
+}
+
+.progress-indicator-2 {
+  border: 2px solid var(--link);
+  width: 0;
+  border-radius: 8px;
+  animation: anim-progress-indicator 1.5s ease-out infinite;
+  position: absolute;
+  top: 0;
+}

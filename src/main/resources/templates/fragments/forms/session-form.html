@@ -1,0 +1,75 @@
+<div id="session-form">
+  <form
+    id="session-handler"
+    data-session-type="SIGN_IN"
+    data-session-action="/session"
+    accept-charset="UTF-8"
+    method="POST"
+  >
+    <div id="session-top">
+      <div class="part">
+        <h2>Faça seu login</h2>
+        <button
+          type="button"
+          aria-label="Botão para fechar o formulário"
+          title="Fechar formulário"
+          class="button-icon"
+          id="session-form-hidden"
+        >
+          <i class="bi bi-x-lg"></i>
+        </button>
+      </div>
+      <p>
+        É bom vê-lo por aqui! Faça seu login para poder oficializar sua pontuação e aparecer nos
+        rankings
+      </p>
+    </div>
+    <div class="base-input">
+      <label for="session-email">Email</label>
+      <input
+        aria-label="Campo para digitar seu email"
+        type="email"
+        name="email"
+        autocomplete="email"
+        data-error="Digite um email válido"
+        id="session-email"
+        placeholder="robin.allsunday@noble.com"
+      />
+    </div>
+    <div class="base-input">
+      <label for="session-password">Senha</label>
+      <input
+        type="password"
+        name="password"
+        data-error="Digite uma senha com pelo menos 8 caracteres"
+        aria-label="Campo para digitar sua senha"
+        id="session-password"
+        placeholder="Mínimo de 8 caracteres"
+      />
+    </div>
+    <div id="forgot-password-container">
+      <a
+        aria-label="Link para página de recuperação de senha"
+        href="/forgot-password"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="link"
+        >Esqueceu a senha?</a
+      >
+    </div>
+    <div id="session-buttons">
+      <button
+        type="submit"
+        id="session-in"
+        title="Entrar na sua conta"
+        aria-label="Botão para fazer login"
+        class="button-primary"
+      >
+        Login
+      </button>
+      <button type="button" title="Crie uma conta" id="sign-up" aria-label="Botão para criar conta">
+        Criar conta
+      </button>
+    </div>
+  </form>
+</div>

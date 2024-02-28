@@ -1,0 +1,56 @@
+#toaster-container {
+  position: fixed;
+  top: 5vh;
+  right: 5vw;
+  display: flex;
+  max-width: 600px;
+  width: 70vw;
+  background: var(--secondary);
+  padding: 1rem;
+  border-radius: 2px;
+  align-items: baseline;
+  justify-content: center;
+  flex-direction: column;
+  cursor: pointer;
+  overflow-x: hidden;
+}
+
+#toaster-container:active {
+  filter: brightness(0.8);
+}
+
+#toaster-container-active {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  border: 2px solid var(--link);
+}
+
+#toaster-header {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.5rem;
+  align-items: center;
+  width: 100%;
+}
+
+#toaster-header-part {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+#toaster-header-part i {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.2em;
+  color: var(--title);
+}
+
+#toaster-message {
+  color: var(--title);
+  font-size: 0.88em;
+}

@@ -1,0 +1,115 @@
+#user-body-container {
+  padding: 0 2rem 1rem 2rem;
+  padding-top: 5vh;
+  width: 90%;
+  max-width: 620px;
+  display: block;
+  border: 1px solid var(--primaryVariant);
+  margin-bottom: 2rem;
+}
+
+.body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.avatar-group {
+  display: flex;
+  justify-content: center;
+  align-self: center;
+  padding-top: 5vh;
+}
+
+.form-user-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.9);
+}
+
+.form-user {
+  width: 90%;
+  max-width: 520px;
+  background: var(--primary);
+  border: 2px solid var(--primaryVariant);
+  padding: 2rem 1rem;
+}
+
+.form-user h2 {
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+}
+
+.form-user h2 i {
+  color: var(--title);
+}
+
+.input-group {
+  margin-top: 1rem;
+}
+
+.input-group-ip {
+  padding: 0.5rem 1rem;
+  border: 2px solid var(--primaryVariant);
+  border-radius: 4px;
+  margin-top: 0.5rem;
+  cursor: pointer;
+}
+
+.input-group-ip span {
+  color: var(--textPlaceholder);
+}
+
+.form-user-buttons {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  align-items: center;
+  margin-top: 1rem;
+}
+
+.change-password-input {
+  display: flex;
+  justify-content: flex-end;
+}
+
+#pseudo-input-password {
+  padding: 0.5rem;
+}
+
+#pseudo-input-password:hover {
+  color: var(--link);
+}
+
+.form-user-password-container {
+  top: unset;
+}
+
+.input-password {
+  margin-bottom: 0.5rem;
+}
+
+.form-user-password-buttons {
+  margin-top: 1.5rem;
+}
+
+@media (max-width: 720px) {
+  #user-body-container {
+    padding: 1rem;
+  }
+}

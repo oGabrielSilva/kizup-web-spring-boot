@@ -1,0 +1,14 @@
+{
+  "configurations": [
+    {
+      "type": "java",
+      "name": "Spring Boot-Startup<kizup>",
+      "request": "launch",
+      "cwd": "${workspaceFolder}",
+      "mainClass": "com.social.noble.kizup.Startup",
+      "projectName": "kizup",
+      "args": "",
+      "envFile": "${workspaceFolder}/.env"
+    }
+  ]
+}

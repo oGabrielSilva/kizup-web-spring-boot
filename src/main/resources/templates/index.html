@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head th:insert="~{fragments/default-head}"> </head>
+
+<body>
+  <div data-default-transition="400" id="wwwroot">
+    <th:block th:if="${user == null}">
+      <div class="header" th:insert="~{fragments/headers/HOME-header}"></div>
+      <div class="body" th:insert="~{fragments/body/HOME-body}"></div>
+      <input type="hidden" data-page="INDEX_PAGE" id="input-f-html-page-name" value="INDEX_PAGE" />
+    </th:block>
+
+    <th:block th:unless="${user == null}">
+      <div class="header" th:insert="~{fragments/headers/logged-in/login-HOME-header}"></div>
+      <div class="body" th:insert="~{fragments/body/logged-in/login-HOME-body}"></div>
+      <input type="hidden" data-page="INDEX_PAGE_LOGGED_IN" id="input-f-html-page-name" value="INDEX_PAGE_LOGGED_IN" />
+    </th:block>
+  </div>
+</body>
+
+</html>

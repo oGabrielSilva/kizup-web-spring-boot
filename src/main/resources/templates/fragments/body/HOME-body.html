@@ -1,0 +1,35 @@
+<div id="home-body">
+  <div id="home-body-top">
+    <h2 role="link" title="Annonymous">
+      <span>Olá</span>,
+      <a href="/user" aria-label="Link para perfil do usuário" title="Nome do usuário" class="link">
+        <span class="title" th:text="${user != null ? user.name : 'Annonymous'}"></span>
+      </a>
+    </h2>
+  </div>
+  <main id="home-main">
+    <section style="margin-top: 2rem" id="user-quizzes">
+      <h3>Meus quizzes</h3>
+      <div class="quizzes-container">
+        <p>
+          Você ainda não criou nenhum quiz. Clique
+          <a href="/quiz/new" target="_blank" rel="noopener noreferrer">aqui</a>
+          para criar o primeiro!
+        </p>
+      </div>
+    </section>
+    <section id="last-quizzes-community">
+      <h3>Últimos da comunidade</h3>
+      <div class="quizzes-container">
+        <div>
+          <p>
+            Não foi encontrado nenhum quiz. Seja o primeiro a criar um quiz. Clique no botão
+            flutuante
+            <a href="/quiz/new" target="_blank" rel="noopener noreferrer">crie o seu quiz</a>.
+          </p>
+        </div>
+      </div>
+    </section>
+  </main>
+  <div th:insert="~{fragments/forms/session-form}" id="session-th-form-container"></div>
+</div>

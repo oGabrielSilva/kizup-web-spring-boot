@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <th:block th:replace="~{fragments/default-head}"></th:block>
+  <link rel="stylesheet" href="/static/css/cssfragments/body/user-body.css">
+</head>
+
+<body>
+  <div data-default-transition="400" id="wwwroot">
+    <th:block th:if="${user == null}">
+      <div class="header" th:insert="~{fragments/headers/HOME-header}"></div>
+      <div class="body" th:insert="~{fragments/body/USER-body}" id="user-body"></div>
+      <div th:insert="~{fragments/forms/session-form}" id="session-th-form-container"></div>
+      <input type="hidden" data-page="USER_PAGE" id="input-f-html-page-name" value="USER_PAGE" />
+    </th:block>
+
+    <th:block th:unless="${user == null}">
+      <div class="header" th:insert="~{fragments/headers/logged-in/login-USER-header}"></div>
+      <div class="body" th:insert="~{fragments/body/logged-in/login-USER-body}" id="user-body"></div>
+      <input type="hidden" data-page="USER_PAGE_LOGGED_IN" id="input-f-html-page-name" value="USER_PAGE_LOGGED_IN" />
+    </th:block>
+  </div>
+</body>
+
+</html>

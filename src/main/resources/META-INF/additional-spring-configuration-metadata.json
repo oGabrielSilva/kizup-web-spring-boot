@@ -1,0 +1,29 @@
+{
+  "properties": [
+    {
+      "name": "token.secret",
+      "type": "java.lang.String",
+      "description": "JWT_SECRET value"
+    },
+    {
+      "name": "token.issuer",
+      "type": "java.lang.String",
+      "description": "JWT issuer"
+    },
+    {
+      "name": "token.cookies.key",
+      "type": "java.lang.String",
+      "description": "JWT cookie key"
+    },
+    {
+      "name": "cloud.project.id",
+      "type": "java.lang.String",
+      "description": "Google Cloud Project ID"
+    },
+    {
+      "name": "cloud.project.bucket.name",
+      "type": "java.lang.String",
+      "description": "Cloud Storage Bucket name"
+    }
+  ]
+}

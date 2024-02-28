@@ -1,0 +1,21 @@
+{
+  "name": "kizup",
+  "version": "0.0.0-SNAPSHOOT",
+  "main": "main.ts",
+  "scripts": {
+    "dev": "webpack -w",
+    "build": "webpack"
+  },
+  "devDependencies": {
+    "ts-loader": "^9.5.1",
+    "typescript": "^5.3.3",
+    "webpack": "^5.90.2",
+    "webpack-cli": "^5.1.4"
+  },
+  "license": "UNLICENSED",
+  "author": {
+    "name": "Gabriel Henrique da Silva",
+    "email": "odev.gabriel@gmail.com",
+    "url": "https://gabrielsilva.vercel.app"
+  }
+}

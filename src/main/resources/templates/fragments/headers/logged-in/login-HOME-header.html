@@ -1,0 +1,76 @@
+<div id="home-header">
+  <header>
+    <div class="header-top">
+      <div>
+        <a draggable="false" href="/">
+          <h1 id="app-name" role="link">Kizup</h1>
+        </a>
+      </div>
+
+      <div>
+        <a th:aria-label="|Link para o perfil do usuário ${user.name}|" href="/user">
+          <button role="link" type="button" class="button-icon">
+            <img
+              th:src="${user.avatarURL}"
+              loading="lazy"
+              width="24"
+              height="24"
+              th:alt="${user.name}"
+              th:title="|Avatar do usuário ${user.name}|"
+              aria-label="Avatar do usuário"
+            />
+          </button>
+        </a>
+      </div>
+    </div>
+    <div class="header-query">
+      <form
+        autocomplete="off"
+        action="/s"
+        method="GET"
+        accept-charset="UTF-8"
+        id="header-form-query"
+      >
+        <input
+          type="search"
+          name="query"
+          id="header-input-query"
+          placeholder="Pesquise por quizzes ou tags"
+        />
+        <button type="submit" id="query-submit"><i class="bi bi-search"></i></button>
+      </form>
+    </div>
+    <div class="header-navigation">
+      <nav>
+        <ul>
+          <li>
+            <a
+              draggable="false"
+              title="Descubra outros quizzes para jogar"
+              href="/discovery"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Link para explorar quizzes pela plataforma Kizup"
+            >
+              <i class="bi bi-compass"></i>
+              <span>Explorar</span>
+            </a>
+          </li>
+          <li>
+            <a
+              draggable="false"
+              title="Clique para criar um novo quiz!"
+              href="/quiz/new"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Link para acessar a página de criar novos quizzes"
+            >
+              <i class="bi bi-shop"></i>
+              <span>Crie o seu quiz</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+</div>

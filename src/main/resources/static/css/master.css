@@ -1,0 +1,227 @@
+:root {
+  --primary: #03030a;
+  --primaryVariant: #090a1e;
+  --secondary: #2b3295;
+  --text: #ababab;
+  --title: #fff;
+  --textSecondary: #e9e9e9;
+  --textWarn: #000000;
+  --textPlaceholder: #6b6b6b;
+  --link: #60b4ff;
+  --danger: #ff2626;
+  --success: #00fb44;
+  --warn: #ffca00;
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  border: none;
+  color: var(--text);
+  outline: none;
+  list-style: none;
+  transition: all 0.4s ease-in-out;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  -webkit-tap-highlight-color: transparent;
+}
+
+*::placeholder {
+  color: var(--textPlaceholder);
+}
+
+body,
+html {
+  max-width: 100vw;
+  overflow-x: hidden;
+}
+
+body {
+  background: var(--primary);
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+#wwwroot {
+  width: 100%;
+  max-width: 1024px;
+}
+
+#wwwroot,
+#wwwroot * {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu,
+    Cantarell, Open Sans, Helvetica Neue, sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: var(--title);
+}
+
+a {
+  color: var(--link);
+  text-decoration: none;
+}
+
+button {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  transition: all 50ms ease;
+}
+
+button * {
+  cursor: pointer;
+}
+
+button,
+button i,
+button span {
+  color: var(--text);
+}
+
+button:hover,
+button:hover i,
+button:hover span {
+  color: var(--title);
+}
+
+i {
+  font-size: 1.5em;
+  display: inline-block;
+}
+
+input {
+  background: var(--primary);
+  width: 100%;
+  padding: 0.5rem 1rem;
+  border: 2px solid var(--primaryVariant);
+  border-radius: 8px;
+  color: var(--text);
+}
+
+input:focus {
+  background: var(--primaryVariant);
+  border-color: var(--secondary);
+  color: var(--title);
+}
+
+label {
+  padding-left: 2px;
+  padding-bottom: 0.3rem;
+  display: block;
+}
+
+.button-icon {
+  padding: 0.5rem;
+  background: transparent;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.title {
+  color: var(--title);
+}
+
+.link {
+  text-decoration: underline;
+  color: var(--link);
+}
+
+.base-input {
+  padding: 1rem 0 0;
+}
+
+.button-primary {
+  background: var(--secondary);
+  padding: 0.5rem 1rem;
+  width: 100%;
+  border-radius: 8px;
+}
+
+.button-primary,
+.button-primary * {
+  color: var(--title);
+  font-weight: 500;
+}
+
+.button-primary:hover {
+  filter: brightness(0.8);
+}
+
+.button-primary:active {
+  background: var(--primaryVariant);
+}
+
+.button-danger {
+  background: var(--danger);
+  padding: 0.5rem 1rem;
+  width: 100%;
+  border-radius: 8px;
+}
+
+.button-danger,
+.button-danger * {
+  color: var(--title);
+  font-weight: 500;
+}
+
+.button-danger:hover {
+  filter: brightness(0.8);
+}
+
+.button-danger:active {
+  background: var(--primaryVariant);
+}
+
+.input-danger {
+  border-color: var(--danger) !important;
+}
+
+.d-none {
+  display: none !important;
+}
+
+.progress-indicator-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.progress-indicator-background {
+  width: 100%;
+  overflow-x: hidden;
+  position: relative;
+}
+
+.progress-indicator {
+  border: 2px solid var(--link);
+  width: 5%;
+  border-radius: 8px;
+  animation: anim-progress-indicator 1s ease-out infinite;
+}
+
+#sign-out-button {
+  background: var(--danger);
+  padding: 0.5rem;
+  width: 50%;
+  border-radius: 2px;
+  color: var(--title);
+  margin: 1rem 0;
+}
+
+#avatar-IMG {
+  border-radius: 100%;
+  border: 2px solid transparent;
+}

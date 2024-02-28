@@ -1,0 +1,5 @@
+{
+  "java.compile.nullAnalysis.mode": "disabled",
+  "eslint.workingDirectories": ["./src/main/typescript"],
+  "java.configuration.updateBuildConfiguration": "automatic"
+}

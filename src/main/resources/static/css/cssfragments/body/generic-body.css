@@ -1,0 +1,93 @@
+#home-body {
+  padding: 1rem 2rem;
+}
+
+#home-body-top {
+  text-align: end;
+}
+
+#home-main section {
+  margin: 1rem 0 0;
+}
+
+.quizzes-container {
+  padding: 1rem 0.5rem;
+}
+
+#session-form {
+  position: fixed;
+  top: 0;
+  left: 100vw;
+  background: rgba(0, 0, 0, 0.6);
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#session-handler {
+  width: 90%;
+  background: var(--primary);
+  border: 2px solid var(--primaryVariant);
+  border-radius: 8px;
+  padding: 2rem 1rem;
+  max-height: 90%;
+  max-width: 680px;
+}
+
+#session-top .part {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+}
+
+#session-top p {
+  margin-bottom: 1rem;
+}
+
+#forgot-password-container {
+  display: flex;
+  justify-content: flex-end;
+  padding: 1rem 0;
+}
+
+#session-buttons {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+
+#sign-up {
+  font-weight: 500;
+  color: var(--title);
+}
+
+@media (max-width: 720px) {
+  #home-body {
+    padding: 1rem;
+  }
+}
+
+#user-container-view {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 50vh;
+}
+
+#user-logged-out {
+  max-width: 520px;
+  width: 90%;
+}
+
+#home-link {
+  text-decoration: underline;
+}
+
+#alert-txt {
+  margin: 0.2rem 0 1rem 0;
+}
