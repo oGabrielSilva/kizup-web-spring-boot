@@ -274,8 +274,22 @@ export class LoggedUserPageModule {
     if (this.avatar.input.files && this.avatar.input.files[0]) {
       const blob = await this.avatar.tool.imageToBlob(this.avatar.input.files[0]);
       if (blob) {
-        this.avatar.blob = blob;
-        this.avatar.HTMLImage.src = URL.createObjectURL(blob);
+        this.progress.show();
+        UpdateUser.avatar(blob, this.api)
+          .then(({ json, status }) => {
+            if (status === 200) {
+              this.avatar.blob = blob;
+              this.avatar.HTMLImage.src = json.URL.concat('?query=' + Date.now());
+            } else {
+              this.toaster.warn(json.error);
+            }
+            this.progress.hidden();
+          })
+          .catch((e) => {
+            console.log(e);
+            this.progress.hidden();
+            this.toaster.danger();
+          });
       }
     }
   }

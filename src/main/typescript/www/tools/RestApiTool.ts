@@ -3,58 +3,77 @@ import { SYSTEM_STORAGE_KEY_TOKEN } from '../constants/system';
 export class RestApiTool {
   private readonly base = '/api';
 
-  public async post(path: string, body: unknown, requestHeaders = {} as Headers) {
+  public generateBase(path: string) {
+    const headers = new Headers();
+    const token = this.recoveryToken();
+    if (token) headers.set('Authorization', `Bearer ${token}`);
+
+    return { URL: this.base.concat(path.startsWith('/') ? path : '/'.concat(path)), headers };
+  }
+
+  public async post(path: string, body: unknown, requestHeaders?: Headers) {
     const token = this.recoveryToken();
     const headers = new Headers();
     if (requestHeaders) {
-      Object.keys(requestHeaders).forEach((key) => headers.set(key, (requestHeaders as any)[key]));
+      requestHeaders.forEach((value, key) => headers.set(key, value));
     }
-    headers.set('Content-Type', 'application/json');
+    if (!headers.has('Content-Type')) {
+      headers.append('Content-Type', 'application/json');
+    }
     if (token) headers.set('Authorization', `Bearer ${token}`);
     return fetch(this.base.concat(path[0] === '/' ? path : '/' + path), {
-      body: typeof body === 'string' ? body : JSON.stringify(body),
+      body:
+        body instanceof FormData ? body : typeof body === 'string' ? body : JSON.stringify(body),
       headers,
       method: 'POST',
     });
   }
 
-  public async patch(path: string, body: unknown, requestHeaders = {} as Headers) {
+  public async patch(path: string, body: unknown, requestHeaders?: Headers) {
     const token = this.recoveryToken();
     const headers = new Headers();
     if (requestHeaders) {
-      Object.keys(requestHeaders).forEach((key) => headers.set(key, (requestHeaders as any)[key]));
+      requestHeaders.forEach((value, key) => headers.set(key, value));
     }
-    headers.set('Content-Type', 'application/json');
+    if (!headers.has('Content-Type')) {
+      headers.append('Content-Type', 'application/json');
+    }
     if (token) headers.set('Authorization', `Bearer ${token}`);
     return fetch(this.base.concat(path[0] === '/' ? path : '/' + path), {
-      body: typeof body === 'string' ? body : JSON.stringify(body),
+      body:
+        body instanceof FormData ? body : typeof body === 'string' ? body : JSON.stringify(body),
       headers,
       method: 'PATCH',
     });
   }
 
-  public async put(path: string, body: unknown, requestHeaders = {} as Headers) {
+  public async put(path: string, body: unknown, requestHeaders?: Headers) {
     const token = this.recoveryToken();
     const headers = new Headers();
     if (requestHeaders) {
-      Object.keys(requestHeaders).forEach((key) => headers.set(key, (requestHeaders as any)[key]));
+      requestHeaders.forEach((value, key) => headers.set(key, value));
     }
-    headers.set('Content-Type', 'application/json');
+    if (!headers.has('Content-Type')) {
+      headers.append('Content-Type', 'application/json');
+    }
     if (token) headers.set('Authorization', `Bearer ${token}`);
     return fetch(this.base.concat(path[0] === '/' ? path : '/' + path), {
-      body: typeof body === 'string' ? body : JSON.stringify(body),
+      body:
+        body instanceof FormData ? body : typeof body === 'string' ? body : JSON.stringify(body),
       headers,
       method: 'PUT',
     });
   }
 
-  public async delete(path: string, requestHeaders = {} as Headers) {
+  public async delete(path: string, requestHeaders?: Headers) {
     const token = this.recoveryToken();
     const headers = new Headers();
     if (requestHeaders) {
-      Object.keys(requestHeaders).forEach((key) => headers.set(key, (requestHeaders as any)[key]));
+      requestHeaders.forEach((value, key) => headers.set(key, value));
     }
-    headers.set('Content-Type', 'application/json');
+    if (!headers.has('Content-Type')) {
+      headers.append('Content-Type', 'application/json');
+    }
     if (token) headers.set('Authorization', `Bearer ${token}`);
     return fetch(this.base.concat(path[0] === '/' ? path : '/' + path), {
       headers,

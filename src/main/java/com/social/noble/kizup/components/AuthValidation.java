@@ -1,4 +1,4 @@
-package com.social.noble.kizup.validations;
+package com.social.noble.kizup.components;
 
 import org.springframework.stereotype.Component;
 

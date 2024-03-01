@@ -1,19 +1,20 @@
 package com.social.noble.kizup.services;
 
-import java.net.URL;
 import java.time.Instant;
 import java.util.UUID;
-import java.util.concurrent.TimeUnit;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.google.cloud.Identity;
+import com.google.cloud.Policy;
 import com.google.cloud.storage.BlobId;
 import com.google.cloud.storage.BlobInfo;
 import com.google.cloud.storage.Bucket;
 import com.google.cloud.storage.Storage;
 import com.google.cloud.storage.StorageOptions;
+import com.google.cloud.storage.StorageRoles;
 
 @Service
 public class ImageStorageService {
@@ -29,6 +30,13 @@ public class ImageStorageService {
     public synchronized Bucket getBucket() {
         if (storage == null) {
             storage = StorageOptions.newBuilder().setProjectId(projectId).build().getService();
+            Policy originalPolicy = storage.getIamPolicy(defaultBucketName);
+            storage.setIamPolicy(
+                    defaultBucketName,
+                    originalPolicy
+                            .toBuilder()
+                            .addIdentity(StorageRoles.objectViewer(), Identity.allUsers()) // All users can view
+                            .build());
         }
         if (bucket == null || !bucket.getName().equals(defaultBucketName)) {
             bucket = storage.get(defaultBucketName);
@@ -39,6 +47,13 @@ public class ImageStorageService {
     public synchronized Bucket getBucket(String bucketName) {
         if (storage == null) {
             storage = StorageOptions.newBuilder().setProjectId(projectId).build().getService();
+            Policy originalPolicy = storage.getIamPolicy(defaultBucketName);
+            storage.setIamPolicy(
+                    defaultBucketName,
+                    originalPolicy
+                            .toBuilder()
+                            .addIdentity(StorageRoles.objectViewer(), Identity.allUsers()) // All users can view
+                            .build());
         }
         if (bucketName == null) {
             bucketName = defaultBucketName;
@@ -51,11 +66,11 @@ public class ImageStorageService {
 
     public synchronized String upload(MultipartFile file, UUID userUID) {
         try {
-            if (bucket == null) {
+            if (bucket == null || storage == null) {
                 getBucket();
             }
             String bucketName = bucket.getName();
-            String fileName = userUID.toString();
+            String fileName = "avatar/" + userUID.toString().concat(".jpeg");
             BlobId blobId = BlobId.of(bucketName, fileName);
             BlobInfo blobInfo = BlobInfo.newBuilder(blobId).build();
 
@@ -65,11 +80,14 @@ public class ImageStorageService {
                             storage.get(bucketName, fileName).getGeneration());
 
             storage.createFrom(blobInfo, file.getInputStream(), precondition);
-            URL url = storage.signUrl(blobInfo, 365 * 5, TimeUnit.DAYS, Storage.SignUrlOption.withV4Signature());
-            return url.getPath();
+            String url = new String("https://[bucket].storage.googleapis.com/[file]")
+                    .replace("[bucket]", bucketName)
+                    .replace("[file]", fileName);
+            return url;
         } catch (Exception e) {
             System.err.println("\n\nImageStorageService ERR: " + e.getMessage());
-            System.out.println(userUID);
+            e.printStackTrace();
+            System.out.println("\n" + userUID);
             System.out.println(Instant.now().toString() + "\n\n");
             return null;
         }

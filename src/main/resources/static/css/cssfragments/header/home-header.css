@@ -90,6 +90,11 @@ nav ul li a * {
   color: var(--title);
 }
 
+.user-avatar-IMG {
+  border: 2px solid transparent;
+  border-radius: 100%;
+}
+
 @media (max-width: 720px) {
   #home-header {
     padding: 1rem;

@@ -19,10 +19,10 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.social.noble.kizup.DTOs.request.SessionRequestDTO;
 import com.social.noble.kizup.DTOs.response.SessionResponseDTO;
+import com.social.noble.kizup.components.AuthValidation;
 import com.social.noble.kizup.entities.UserEntity;
 import com.social.noble.kizup.repositories.UserRepository;
 import com.social.noble.kizup.security.TokenService;
-import com.social.noble.kizup.validations.AuthValidation;
 
 import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletResponse;

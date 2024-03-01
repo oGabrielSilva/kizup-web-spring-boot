@@ -18,8 +18,9 @@
       <div>
         <button id="choose-avatar-button" type="button" aria-label="Botão para escolher novo avatar"
           title="Escolha um novo avatar">
-          <img id="avatar-IMG" th:src="${user.avatarURL}" alt="Avatar" width="70" height="70" loading="lazy"
-            role="button" th:aria-label="|Avatar do usuário ${user.name}|" th:title="|Avatar - ${user.name}|">
+          <img id="avatar-IMG" th:src="${user.avatarURL} + '?query=' + ${now}" alt="Avatar" width="70" height="70"
+            loading="lazy" role="button" th:aria-label="|Avatar do usuário ${user.name}|"
+            th:title="|Avatar - ${user.name}|">
         </button>
       </div>
       <div>

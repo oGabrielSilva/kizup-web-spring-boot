@@ -5,18 +5,22 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 
+import com.social.noble.kizup.components.AuthValidation;
 import com.social.noble.kizup.entities.UserEntity;
 import com.social.noble.kizup.repositories.UserRepository;
 import com.social.noble.kizup.security.TokenService;
-import com.social.noble.kizup.validations.AuthValidation;
+import com.social.noble.kizup.services.ImageStorageService;
 
 import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletResponse;
@@ -34,6 +38,24 @@ public class UserRestController {
     AuthValidation validation;
     @Autowired
     TokenService tokenService;
+    @Autowired
+    ImageStorageService storage;
+
+    @PatchMapping(path = "/avatar", consumes = { MediaType.MULTIPART_FORM_DATA_VALUE })
+    public ResponseEntity<?> updateAvatar(@RequestPart MultipartFile avatar, @AuthenticationPrincipal UserEntity user) {
+        if (avatar == null) {
+            return new ResponseEntity<>(Map.of("error", "Imagem não enviada"),
+                    HttpStatus.BAD_REQUEST);
+        }
+        if (!avatar.getContentType().contains("jpeg") || !avatar.getContentType().contains("jpeg")) {
+            return new ResponseEntity<>(Map.of("error", "Erro de implementação. A imagem recebida não é jpeg."),
+                    HttpStatus.BAD_REQUEST);
+        }
+        var URL = storage.upload(avatar, user.getID());
+        user.setAvatarURL(URL);
+        repository.save(user);
+        return new ResponseEntity<>(Map.of("URL", URL), HttpStatus.OK);
+    }
 
     @PatchMapping("/name")
     public ResponseEntity<?> updateName(@RequestBody Map<String, String> map,

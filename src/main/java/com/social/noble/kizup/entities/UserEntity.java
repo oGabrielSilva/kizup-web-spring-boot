@@ -11,6 +11,7 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import com.social.noble.kizup.components.FastUURI;
 import com.social.noble.kizup.enums.UserRole;
 
 import jakarta.persistence.Column;
@@ -55,6 +56,9 @@ public class UserEntity implements UserDetails {
 
     @Column(nullable = false)
     private Boolean emailVerified = false;
+
+    @Column(nullable = true)
+    private String emailVerificationCode = FastUURI.getNormal();
 
     @Column(nullable = false)
     private UserRole role = UserRole.COMMON;

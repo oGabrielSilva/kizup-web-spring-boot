@@ -18,6 +18,15 @@ class Main {
         new LoggedUserPageModule().run();
         break;
     }
+    this.preventAvatarCache();
+  }
+
+  private preventAvatarCache() {
+    document.querySelectorAll('img').forEach((img) => {
+      if (img.src.includes('/avatar/') && !img.src.includes('?query')) {
+        console.error('Avatar IMG needs the query in its URL', img);
+      }
+    });
   }
 
   public static build() {
