@@ -16,6 +16,8 @@ const headerBaseIcons = {
 };
 
 export class ToasterTool {
+  private static DEFAULT_TIMER = 6000;
+
   private static readonly stack: Array<{
     message: string;
     timer: number;
@@ -23,7 +25,11 @@ export class ToasterTool {
     onDestroy: () => void;
   }> = [];
 
-  public success(messageTxt: string = ':)', onDestroy?: () => void, timer = 6000) {
+  public success(
+    messageTxt: string = ':)',
+    onDestroy?: () => void,
+    timer = ToasterTool.DEFAULT_TIMER
+  ) {
     if (document.getElementById(id.container)) {
       this.toStack(messageTxt, timer, onDestroy, 'success');
       return;
@@ -45,7 +51,7 @@ export class ToasterTool {
     return;
   }
 
-  public info(messageTxt: string, onDestroy?: () => void, timer = 6000) {
+  public info(messageTxt: string, onDestroy?: () => void, timer = ToasterTool.DEFAULT_TIMER) {
     if (document.getElementById(id.container)) {
       this.toStack(messageTxt, timer, onDestroy, 'info');
       return;
@@ -57,7 +63,11 @@ export class ToasterTool {
     return;
   }
 
-  public warn(messageTxt: string = 'Oopsss...', onDestroy?: () => void, timer = 6000) {
+  public warn(
+    messageTxt: string = 'Oopsss...',
+    onDestroy?: () => void,
+    timer = ToasterTool.DEFAULT_TIMER
+  ) {
     if (document.getElementById(id.container)) {
       this.toStack(messageTxt, timer, onDestroy, 'warn');
       return;
@@ -79,7 +89,11 @@ export class ToasterTool {
     return;
   }
 
-  public danger(messageTxt: string = 'Oopsss...', onDestroy?: () => void, timer = 6000) {
+  public danger(
+    messageTxt: string = 'Oopsss...',
+    onDestroy?: () => void,
+    timer = ToasterTool.DEFAULT_TIMER
+  ) {
     if (document.getElementById(id.container)) {
       this.toStack(messageTxt, timer, onDestroy, 'danger');
       return;
@@ -105,6 +119,7 @@ export class ToasterTool {
     type: 'success' | 'danger' | 'warn' | 'info'
   ) {
     ToasterTool.stack.push({ message, timer, type, onDestroy });
+    setTimeout(() => document.getElementById(id.container).click(), 10);
   }
 
   private toWWWROOT(container: HTMLElement) {

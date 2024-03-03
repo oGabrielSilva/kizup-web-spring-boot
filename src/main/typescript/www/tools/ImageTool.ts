@@ -45,8 +45,8 @@ export class ImageTool {
         const url = URL.createObjectURL(file as Blob);
         const img = new Image();
         img.onload = async () => {
-          const w = img.width * 0.8;
-          const h = img.height * 0.8;
+          const w = img.width;
+          const h = img.height;
           const canvas = document.createElement('canvas');
           const ctx = canvas.getContext('2d')!;
 
@@ -59,7 +59,7 @@ export class ImageTool {
               resolve(b);
             },
             'image/jpeg',
-            1
+            0.9
           );
         };
         img.crossOrigin = 'Anonymous';

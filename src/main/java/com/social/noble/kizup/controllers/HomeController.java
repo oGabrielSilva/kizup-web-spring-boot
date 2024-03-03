@@ -25,7 +25,7 @@ public class HomeController {
         return new ModelAndView("index");
     }
 
-    @GetMapping("/user")
+    @GetMapping("user")
     public ModelAndView user(@AuthenticationPrincipal UserEntity original) {
         if (original != null) {
             var now = (Long) Instant.now().toEpochMilli();
@@ -34,7 +34,7 @@ public class HomeController {
         return new ModelAndView("user");
     }
 
-    @GetMapping("/quiz")
+    @GetMapping("quiz")
     public ModelAndView quiz(@AuthenticationPrincipal UserEntity original) {
         if (original != null) {
             var now = (Long) Instant.now().toEpochMilli();

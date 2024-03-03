@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <th:block th:replace="~{fragments/default-head}" />
+  <link rel="stylesheet" href="/static/css/cssfragments/body/quiz-body.css">
+</head>
+
+<body>
+  <div data-default-transition="400" id="wwwroot">
+    <th:block th:if="${user == null}">
+      <div class="header" th:insert="~{fragments/headers/NEW_QUIZ-header}"></div>
+      <div class="body" th:insert="~{fragments/body/NEW_QUIZ-body}"></div>
+      <div th:insert="~{fragments/forms/session-form}" id="session-th-form-container"></div>
+      <input type="hidden" data-page="NEW_QUIZ_PAGE" id="input-f-html-page-name" value="NEW_QUIZ_PAGE" />
+    </th:block>
+
+    <th:block th:unless="${user == null}">
+      <div class="header" th:insert="~{fragments/headers/logged-in/login-NEW_QUIZ-header}"></div>
+      <div class="body" th:insert="~{fragments/body/logged-in/login-NEW_QUIZ-body}"></div>
+      <input type="hidden" data-page="NEW_QUIZ_PAGE_LOGGED_IN" id="input-f-html-page-name"
+        value="NEW_QUIZ_PAGE_LOGGED_IN" />
+    </th:block>
+  </div>
+</body>
+
+</html>

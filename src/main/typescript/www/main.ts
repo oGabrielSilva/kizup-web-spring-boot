@@ -1,4 +1,5 @@
 import { LoggedUserPageModule } from './modules/LoggedUserPageModule';
+import { NewQuizFormModule } from './modules/NewQuizFormModule';
 import { SessionModule } from './modules/SessionModule';
 
 class Main {
@@ -16,6 +17,12 @@ class Main {
         break;
       case 'USER_PAGE_LOGGED_IN':
         new LoggedUserPageModule().run();
+        break;
+      case 'NEW_QUIZ_PAGE':
+        new SessionModule().run();
+        break;
+      case 'NEW_QUIZ_PAGE_LOGGED_IN':
+        new NewQuizFormModule().run();
         break;
     }
     this.preventAvatarCache();

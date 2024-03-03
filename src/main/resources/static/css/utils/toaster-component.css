@@ -13,6 +13,7 @@
   flex-direction: column;
   cursor: pointer;
   overflow-x: hidden;
+  z-index: 9991;
 }
 
 #toaster-container:active {

@@ -1,0 +1,21 @@
+<div id="quiz-header" class="app-header">
+  <header>
+    <div class="header-top">
+      <div>
+        <a draggable="false" href="/">
+          <h1 id="app-name" role="link">Kizup</h1>
+        </a>
+      </div>
+
+      <div>
+        <a th:aria-label="|Link para o perfil do usuário ${user.name}|" href="/user">
+          <button role="link" type="button" class="button-icon">
+            <img th:src="${user.avatarURL} + '?query=' + ${now}" loading="lazy" width="40" height="40"
+              th:alt="${user.name}" th:title="|Avatar do usuário ${user.name}|" aria-label="Avatar do usuário"
+              class="user-avatar-IMG" />
+          </button>
+        </a>
+      </div>
+    </div>
+  </header>
+</div>

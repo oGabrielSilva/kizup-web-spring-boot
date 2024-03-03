@@ -1,0 +1,173 @@
+<section id="quiz-body-container">
+  <div class="main">
+    <div class="info">
+      <div class="goBack">
+        <a href="/" role="button" class="link" aria-label="Botão para voltar">Voltar</a>
+      </div>
+      <div class="content">
+        <h2>Criar novo quiz</h2>
+        <p>
+          Aqui na Kizup for Noble, você tem a liberdade de criar um quiz sobre si mesmo ou sobre
+          qualquer tema que considere relevante. Explore sua criatividade e compartilhe seus
+          conhecimentos ou interesses
+        </p>
+      </div>
+    </div>
+    <main>
+      <form autocomplete="off" id="new-quiz-form">
+        <div class="banner" style="text-align: center">
+          <img role="button" loading="eager" aria-label="Banner para o quiz. Imagem de apresentação do quiz"
+            title="Banner" alt="Banner do quiz" class="quiz-banner" src="/static/images/placeholder/quiz_banner.svg" />
+          <small>Dê um banner ao seu quiz</small>
+          <input type="file" id="banner-input" class="d-none" accept=".png, .jpg, .jpeg, .PNG, .JPG, .JPEG" />
+        </div>
+        <div class="input base-input">
+          <label for="quiz-title">Título do seu quiz</label>
+          <input type="text" id="quiz-title" data-error="Título do quiz precisa conter pelo menos 5 caracteres"
+            aria-label="Campo para digitar o título do seu quiz"
+            placeholder="Exemplo: Você conhece One Piece? Responda essas 10 perguntas sobre o anime" />
+        </div>
+
+        <div class="input base-input">
+          <label for="quiz-description">Descrição</label>
+          <textarea style="min-height: 150px" type="text" id="quiz-description" data-error=""
+            aria-label="Campo para digitar detalhes sobre o quiz" placeholder=""></textarea>
+        </div>
+
+        <div class="input base-input">
+          <label for="quiz-tags">Tags</label>
+          <input type="text" id="quiz-tags" data-error=""
+            aria-label="Campo para digitar as tags do seu quiz. As tags servem para adicionar categorias, temas e palavras chaves referentes ao quiz. Isso ajuda a localizar seu quiz dentro da plataforma. São separadas por espaços em branco"
+            placeholder="Separe-as por espaços em branco" />
+          <div style="margin-top: 0.5rem">
+            <p>
+              As tags servem para adicionar categorias, temas e palavras chaves referentes ao quiz.
+              Isso ajuda a localizar seu quiz dentro da plataforma. Separe-as por espaços em branco
+            </p>
+          </div>
+          <p><strong>Exemplo:</strong> One_Piece Anime Gear_5</p>
+        </div>
+        <div class="input base-input quests">
+          <div>
+            <h4>Perguntas</h4>
+            <div class="quest-list">
+              <div id="no-quiz-alert" class="d-none">
+                <span id="">Você ainda não adicionou nenhuma pergunta ao quiz.</span>
+              </div>
+              <div style="padding-left: 1rem;" class="quest-p" id="quest-presentation-model">
+                <div class="presentation">
+                  <p>
+                    <strong>1.</strong> <span>Título da pergunta aqui... testando o título
+                      mais longo aqui
+                      Título da
+                      pergunta aqui... testando o título mais longo aqui</span>
+                  </p>
+                  <div>
+                    <button class="delete-quest icon-button">
+                      <i class="bi bi-trash3-fill"></i>
+                    </button>
+                    <button class="show-quest icon-button">
+                      <i class="bi bi-eye-fill"></i>
+                    </button>
+                  </div>
+                </div>
+                <div>
+                  <p><strong class="title">-></strong> Exemplo aqui, é só um teste</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div>
+            <div class="add-quest-container" data-added="A pergunta foi adicionada a lista de perguntas"
+              data-off="left.-100vw" style="left: -100vw;">
+              <div class="content">
+                <div>
+                  <img id="quest-img" title="Adicione uma imagem" class="add-quest-banner"
+                    src="/static/images/placeholder/quiz_banner.svg" alt="Imagem para a pergunta" loading="eager"
+                    aria-label="Imagem para auxiliar na pergunta" role="button" />
+                  <input type="file" id="quest-img-input" class="d-none"
+                    accept=".png, .jpg, .jpeg, .PNG, .JPG, .JPEG" />
+                  <div style="padding: 0 1rem; text-align: center">
+                    <small>Adicione uma imagem (opcional)</small>
+                  </div>
+                </div>
+                <div class="padding">
+                  <div class="input base-input">
+                    <label for="quest-title">Título da pergunta</label>
+                    <input data-error-max="A pergunta não pode ter mais de 100 caracteres" maxlength="100"
+                      aria-label="Campo para digitar o título da pergunta"
+                      placeholder="Mínimo de 5 e máximo de 100 caracteres" type="text" id="quest-title"
+                      data-error="A pergunta precisa conter pelo menos 5 caracteres" />
+                  </div>
+                  <div class="input base-input">
+                    <h3>Adicione as alternativas</h3>
+                    <small>Antes do jogo iniciar, a ordem das alternativas será aleatória</small>
+                    <ul class="alternative-group" data-error-equal="Não pode haver alternativas iguais">
+                      <li>
+                        <div class="item">
+                          <span>1.</span>
+                          <input data-error-max="A pergunta não pode ter mais de 100 caracteres" maxlength="100"
+                            data-class-correct="alternative-correct" data-class-incorrect="alternative-incorrect"
+                            data-class-name="alternative" placeholder="Alternativa 1"
+                            data-error="A alternativa não pode ficar vazia" class="alternative alternative-correct"
+                            type="text" id="alternative-1" aria-label="Campo para digitar a alternativa número 1" />
+                        </div>
+                      </li>
+                      <li>
+                        <div class="item">
+                          <span>2.</span>
+                          <input data-error-max="A pergunta não pode ter mais de 100 caracteres" maxlength="100"
+                            data-class-name="alternative" placeholder="Alternativa 2"
+                            data-error="A alternativa não pode ficar vazia" class="alternative alternative-incorrect"
+                            type="text" id="alternative-2" aria-label="Campo para digitar a alternativa número 2" />
+                        </div>
+                      </li>
+                    </ul>
+                  </div>
+                  <button data-info="Cada pergunta só pode ter até 4 alternativas" type="button"
+                    id="add-alternative">Adicionar alternativa <i class="bi bi-shop"></i></button>
+                  <div class="input base-input">
+                    <h3 style="margin-top: 1rem">Qual a alternativa correta?</h3>
+                    <small>Selecione qual das alternativas é a correta</small>
+                    <div>
+                      <select aria-label="Seletor da alternativa correta" title="Qual das alternativas está correta?"
+                        style="margin-top: 0.5rem;" class="basic" id="alternative-correct">
+                        <option value="1" selected>Alternativa 1</option>
+                        <option value="2">Alternativa 2</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="input base-input">
+                    <label class="title" for="quest-time">Quanto tempo o usuário terá para responder?</label>
+                    <select aria-label="Defina quanto tempo o usuário terá para responder"
+                      title="Quanto tempo o usuário terá para responder?" class="basic" id="quest-time">
+                      <option value="30" selected>30 segundos</option>
+                      <option value="25">25 segundos</option>
+                      <option value="20">20 segundos</option>
+                      <option value="15">15 segundos</option>
+                      <option value="10">10 segundos</option>
+                    </select>
+                  </div>
+                  <div class="buttons">
+                    <button type="button" id="quest-cancel" class="button-primary">Fechar</button>
+                    <button type="button" id="quest-add" class="button-primary">Adicionar</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <button class="add-quest" id="add-quest" type="button"
+              aria-label="Botão para criar uma nova pergunta do quiz" title="Adicione novas perguntas">
+              Adicionar pergunta ao quiz
+            </button>
+          </div>
+        </div>
+        <div class="input base-input">
+          <button class="button-primary" id="create-quiz" type="submit"
+            aria-label="Botão para finalizar a criação do quiz">
+            Criar novo quiz
+          </button>
+        </div>
+      </form>
+    </main>
+  </div>
+</section>
